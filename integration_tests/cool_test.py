@@ -1,18 +1,18 @@
 
 import sys
+import importlib
 
 sys.path.append("..")
 
-from test_unit import RunnerTestCase
+import __main__
+my_module = importlib.import_module(__main__.__file__.split(".")[0])
 
-
-class AnimalTest(RunnerTestCase):
+class AnimalTest(my_module.RunnerTestCase):
 
 
     @classmethod
     def setUpClass(self):
         print("setUpClass called animal test") 
-        #super(AnimalTest, self).init()
         self.settings = self.load_runner_settings()
         self.hello = "test"
 

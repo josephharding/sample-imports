@@ -2,10 +2,13 @@
 import sys
 sys.path.append("../..")
 
-from test_unit import RunnerTestCase
+import importlib
+
+import __main__
+my_module = importlib.import_module(__main__.__file__.split(".")[0])
 
 
-class OtherTest(RunnerTestCase):
+class OtherTest(my_module.RunnerTestCase):
 
 
     @classmethod
