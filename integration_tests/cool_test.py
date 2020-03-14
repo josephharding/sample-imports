@@ -1,13 +1,10 @@
 
-import sys
-import importlib
-
-sys.path.append("..")
-
 import __main__
-my_module = importlib.import_module(__main__.__file__.split(".")[0])
+from inspect import getmodulename
+from importlib import import_module
 
-class AnimalTest(my_module.RunnerTestCase):
+
+class AnimalTest(import_module(getmodulename(__main__.__file__)).RunnerTestCase):
 
 
     @classmethod
