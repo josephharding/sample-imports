@@ -1,16 +1,17 @@
 
-import __main__
-from inspect import getmodulename
-from importlib import import_module
+import unittest
 
 
-class OtherTest(import_module(getmodulename(__main__.__file__)).RunnerTestCase):
+class OtherTest(unittest.TestCase):
 
+
+    def __init__(self, testName, extra):
+        super(OtherTest, self).__init__(testName)
+        self.settings = extra
 
     @classmethod
     def setUpClass(self):
         print("setUpClass called animal test") 
-        self.settings = self.load_runner_settings()
         self.hello = "test"
 
 

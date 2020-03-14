@@ -1,21 +1,20 @@
 
-import __main__
-from inspect import getmodulename
-from importlib import import_module
+import unittest
 
 
-class AnimalTest(import_module(getmodulename(__main__.__file__)).RunnerTestCase):
+class AnimalTest(unittest.TestCase):
+
+
+    def __init__(self, testName, extra):
+        super(AnimalTest, self).__init__(testName)
+        print("the init method is being called")
+        self.settings = extra
 
 
     @classmethod
     def setUpClass(self):
         print("setUpClass called animal test") 
-        self.settings = self.load_runner_settings()
         self.hello = "test"
-
-
-    def test(self):
-        self.assertEqual("joe", self.name)
 
 
     def test_age(self):
